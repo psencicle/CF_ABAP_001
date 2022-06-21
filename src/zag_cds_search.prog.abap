@@ -3,7 +3,7 @@ REPORT zag_cds_search.
 *& Report ZAG_CDS_SEARCH
 *&---------------------------------------------------------------------*
 *& Title       : CDS Search Utility
-*& Author      : Paul Sencicle (Encompass IT Services Ltd)
+*& Author      : Paul Sencicle
 *& Date        : 21/06/2022
 *& Version     : 1.00
 *& Transport   :
@@ -11,7 +11,8 @@ REPORT zag_cds_search.
 *&---------------------------------------------------------------------*
 *& Functional Breakdown:
 *&---------------------------------------------------------------------*
-*&
+*& Link ddldependency & DD03L
+*& Output results as an ALV
 *&---------------------------------------------------------------------*
 *& Revison History:
 *&---------------------------------------------------------------------*
@@ -25,11 +26,16 @@ REPORT zag_cds_search.
 *----------------------------------------------------------------------*
 * Types:
 *----------------------------------------------------------------------*
-
+types: begin of gty_output,
+          DDLNAME    type ddldependency-DDLNAME,
+          OBJECTNAME type ddldependency-OBJECTNAME,
+          STATE      type ddldependency-STATE,
+          OBJECTTYPE type ddldependency-OBJECTTYPE,
+         end of gty_output.
 *----------------------------------------------------------------------*
 * Data:
 *----------------------------------------------------------------------*
-
+DATA: gt_ddldependency TYPE ddldependency_tab.
 *----------------------------------------------------------------------*
 * Local Class Definitions:
 *----------------------------------------------------------------------*
